@@ -23,6 +23,7 @@ import {
   useTrackedPlanes
 } from "@coconut-xr/natuerlich/react";
 import { getPlaneId } from "@coconut-xr/natuerlich";
+import { DoubleSide } from "three";
 
 const sessionOptions: XRSessionInit = {
   requiredFeatures: ["local-floor", "plane-detection"]
@@ -42,7 +43,7 @@ export default function Index() {
           <pointLight position={[0, 1, 0]} intensity={10} />
       {planes.map((plane) => (
         <TrackedPlane plane={plane} key={getPlaneId(plane)}>
-          <meshPhongMaterial color="gray" />
+          <meshPhongMaterial color="gray" side={DoubleSide}/>
         </TrackedPlane>
       ))}
         </ImmersiveSessionOrigin>
